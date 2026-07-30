@@ -1,4 +1,4 @@
-package exercise;
+package model;
 
 public class Book {
     private int id;
@@ -9,6 +9,10 @@ public class Book {
         this.id = id;
         this.title = title;
         this.author = author;
+    }
+
+    public Book() {
+
     }
 
     public int getId() {
@@ -27,11 +31,20 @@ public class Book {
         this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public void setTitle(String title) {
+        this.title=title;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                '}';
     }
 }

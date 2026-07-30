@@ -1,4 +1,4 @@
-package exercise;
+package exercise.utils;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
