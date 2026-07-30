@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Trainee A: Surya Solaiappan
 public class BookDAOImpl implements BookDAO {
     @Override
     public void save(Book book){
@@ -72,6 +73,8 @@ public class BookDAOImpl implements BookDAO {
         }
         return books;
     }
+
+    // Trainee B: Aishwarya Pandiyan
 
     @Override
     public void update(Book book) {
