@@ -75,13 +75,41 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public void update(Book book) {
+        String sql = "UPDATE books SET title=?, author=? WHERE book_id=?";
+        try (Connection connection = ConnectionFactory.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
+            preparedStatement.setString(1, book.getTitle());
+            preparedStatement.setString(2, book.getAuthor());
+            preparedStatement.setInt(3, book.getId());
 
-
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected >= 1) {
+                System.out.println("Updated successfully: " + book);
+            } else {
+                System.out.println("No book found with id " + book.getId() + " to update");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating book: " + book, e);
+        }
     }
 
     @Override
     public void delete(int id) {
+        String sql = "DELETE FROM books WHERE book_id=?";
+        try (Connection connection = ConnectionFactory.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
+            preparedStatement.setInt(1, id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected >= 1) {
+                System.out.println("Deleted book with id " + id);
+            } else {
+                System.out.println("No book found with id " + id + " to delete");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting book with id " + id, e);
+        }
     }
 }
